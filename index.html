@@ -2384,66 +2384,7 @@
       
       });
 
-      //摇一摇
-      $(function () {
-        var Main = (function () {
-          function playAudio(src) {
-            if (typeof Audio != "undefined") {
-              new Audio(src).play();
-            } else if (typeof device != "undefined") {
-              if (device.platform == "Android") {
-                console.log(src);
-              }
-              var mediaRes = new Media(
-                src,
-                function onSuccess() {
-                  mediaRes.release();
-                },
-                function onError(e) {
-                  console.log("error playing sound: " + JSON.stringify(e));
-                }
-              );
-              mediaRes.play();
-            } else {
-              alert("no sound API to play: " + src);
-            }
-          }
-          window.addEventListener("shake", autoRun, false);
-
-          function autoRun() {
-            playAudio("http://ogovuaov8.bkt.clouddn.com/luckymoney.mp3");
-            $(".redPacketInfo").fadeIn();
-            $(".redPacketBox").addClass("comeup");
-            $(".close").addClass("showup");
-
-            $(".close").one("click", function () {
-              $(".redPacketInfo").hide();
-              $(".redPacketBox").removeClass("comeup");
-              $(".close").removeClass("showup");
-            });
-
-            window.addEventListener(
-              "shake",
-              function (event) {
-                event.preventDefault();
-              },
-              false
-            );
-
-            e.stopPropagation();
-
-            $(".redPacketBox").on("click", function (e) {
-              e.stopPropagation();
-            });
-          }
-          var init = function () {};
-          return {
-            init: init,
-          };
-        })();
-
-        $(Main.init());
-      });
+     
     </script>
   </body>
 </html>
